@@ -3,16 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!-- 7) I can pull style.css because i have the static path to it  -->
+    <link rel="stylesheet" href="style.css" />
     <title>User Dairy</title>
+
+    <style>
+      /* body {
+        margin: 0;
+      }
+      .wrapper {
+        font-size: 2rem;
+      }
+      nav {
+        background: black;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      a {
+        color: white;
+        margin-right: 15px;
+        text-decoration: none;
+      } */
+    </style>
   </head>
   <body>
-    <h1>First HTML File</h1>
-    <hr />
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Qui perspiciatis
-      nostrum voluptates, ducimus quasi recusandae, quas impedit vero nihil
-      molestiae praesentium nesciunt dicta commodi possimus accusamus! Excepturi
-      autem saepe officiis.
-    </p>
+    <div class="wrapper">
+      <nav>
+        <div>SSR</div>
+        <div>
+          <a href="/">Home</a>
+          <a href="/login">Login</a>
+          <a href="/register">Register</a>
+        </div>
+      </nav>
+
+      <h1>Welcome to Our community</h1>
+      <hr />
+      <div class="container">
+        <div class="alert alert-primary">
+          Create account to stay connected with us!
+        </div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
+        blanditiis, dolore itaque natus ipsum neque sapiente amet voluptatibus
+        perferendis dolorum?
+      </div>
+      <!-- <div class="container mt-5">
+        <form class="shadow-lg p-3 rounded-5">
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label"
+              >Email address</label
+            >
+            <input
+              type="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              aria-describedby="emailHelp"
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label"
+              >Password</label
+            >
+            <input
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+            />
+          </div>
+          <div class="mb-3 form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Check me out</label
+            >
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div> -->
+    </div>
   </body>
 </html>

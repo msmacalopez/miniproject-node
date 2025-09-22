@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+.wrapper {
+  font-size: 2rem;
+}
+nav {
+  background: black;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+a {
+  color: white;
+  margin-right: 15px;
+  text-decoration: none;
+}
