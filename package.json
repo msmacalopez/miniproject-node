@@ -9,9 +9,9 @@
     "dev": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Macarena Lopez",
   "license": "ISC",
-  "description": "",
+  "description": "User app",
   "dependencies": {
     "express": "^5.1.0"
   }
