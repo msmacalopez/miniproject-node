@@ -7,10 +7,13 @@ body {
 nav {
   background: black;
   color: white;
-  padding: 10px;
+  padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+h1 {
+  padding: 20px 10px 10px;
 }
 a {
   color: white;

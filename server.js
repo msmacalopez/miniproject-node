@@ -5,23 +5,30 @@ import path from "path";
 const __dirname = path.resolve();
 console.log("&&&&&& pwd:", __dirname);
 
-//2) define express varivle and execute the express
+//2) define express varible and execute the express
 const app = express();
 const PORT = 5000;
 
-//7) Serving static file from the public directory
-//path for static resources (keep inside public folder)
-app.use(express.static(path.join(__dirname, "/public"))); //-->go to index.html add <link>
+//7) Serving static file from the public directory (ej: style.css)
+//keep all static resources in public folder
+app.use(express.static(path.join(__dirname, "/public"))); //-->make changes in index.html--> add <link>
 
-//6) send html file as response: sends index.html
+//6) Create endpoints: send html file as response: sends index.html
+//<------Home page controller-------->
 app.get("/", (req, res) => {
-  //6.1) needs absolute path: do PWD
-  //   res.sendFile(
-  //     "/Users/MacaLopez/Documents/DentedCode/DentedCode - Node/miniProj-Node/src/html/index.html"
-  //   );
-  //#####################
-  //6.2) Concatenate my path with the relative path
+  console.log("We received Home");
   res.sendFile(__dirname + "/src/html/index.html");
+});
+
+//<------User Registration controller-------->
+app.get("/register", (req, res) => {
+  console.log("We received Registration");
+  res.sendFile(path.join(__dirname, "/src/html/register.html"));
+});
+//<------User Login controller-------->
+app.get("/login", (req, res) => {
+  console.log("We received Login");
+  res.sendFile(path.join(__dirname, "/src/html/login.html"));
 });
 
 //8) send JSON file now
