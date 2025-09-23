@@ -7,6 +7,7 @@ console.log("&&&&&& pwd:", __dirname);
 
 //10) filesystem -> worker thread (promises, async/await)
 import fs from "fs";
+import { makeHTMLstring } from "./src/fileMerger.js";
 
 //2) define express varible and execute the express
 const app = express();
@@ -23,7 +24,18 @@ app.use(express.urlencoded({ extended: true }));
 //<------Home page controller-------->
 app.get("/", (req, res) => {
   console.log("We received Home");
-  res.sendFile(__dirname + "/src/html/index.html");
+  //read the file
+  fs.readFile(fileName, "utf8", (error, data) => {
+    if (error) {
+      console.log(error);
+      res.sendFile(__dirname + "/src/html/index.html");
+    } else {
+      console.log(data.split("\n"));
+      res.send(makeHTMLstring(data.split("\n")));
+    }
+  });
+  // res.send(makeHTMLstring()); //send string, not a file
+  // res.sendFile(__dirname + "/src/html/index.html");
 });
 
 //<------User Registration controller-------->
@@ -41,16 +53,19 @@ app.post("/register", (req, res) => {
   console.log("Registration completed");
 
   const { name, email, password } = req.body;
-  const str = `${name},${email},${password}`;
+  const str = `${name},${email},${password}\n`;
   console.log(str);
   console.log(str.split(","));
 
-  //create file and write data
-  fs.writeFile(fileName, str, (error) => {
-    error ? console.log(error) : "Data has been written in csv file";
+  //create file and write data (fs.writeFile)
+  fs.appendFile(fileName, str, (error) => {
+    error ? res.send(error.message) : res.redirect("/");
+    // : res.send(
+    //     `<h1 class="alert alert-success">User has been written in csv file, you may log in now</h1>`
+    //   );
   });
 
-  res.sendFile(path.join(__dirname, "/src/html/register.html"));
+  // res.sendFile(path.join(__dirname, "/src/html/register.html"));
 });
 
 //<------User Login controller-------->

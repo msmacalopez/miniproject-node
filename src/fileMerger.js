@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+export const makeHTMLstring = (userArray) => {
+  const str = userArray.reduce((acc, user) => {
+    return user.length
+      ? acc + `<li> ${user.split(",")[0]}: ${user.split(",")[1]} </li>`
+      : acc;
+  });
+  return (
+    `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -45,16 +52,18 @@
           <a href="/register">Register</a>
         </div>
       </nav>
+      
+      <div class="container">
       <h1>Welcome to Our community</h1>
       <hr />
-      <div class="container">
-        <div class="alert alert-primary">
-          Create account to stay connected with us!
-        </div>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-        blanditiis, dolore itaque natus ipsum neque sapiente amet voluptatibus
-        perferendis dolorum?
+        <ul>
+        ` +
+    str +
+    `</ul>
       </div>
     </div>
   </body>
 </html>
+`
+  );
+};

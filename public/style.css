@@ -3,6 +3,7 @@ body {
 }
 .wrapper {
   font-size: 2rem;
+  min-width: 450px;
 }
 nav {
   background: black;
