@@ -8,6 +8,7 @@ console.log("&&&&&& pwd:", __dirname);
 //10) filesystem -> worker thread (promises, async/await)
 import fs from "fs";
 import { makeHTMLstring } from "./src/fileMerger.js";
+import { escape } from "querystring";
 
 //2) define express varible and execute the express
 const app = express();
@@ -74,11 +75,25 @@ app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "/src/html/login.html"));
 });
 
-//8) send JSON file now
-app.get("/api/v1/get-user", (req, res) => {
-  res.json({
-    fName: "Maca",
-    lName: "Lopez",
+//post request login
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  const { email, password } = req.body;
+  const str = email + "," + password;
+
+  //read data from file
+  fs.readFile(fileName, "utf8", (error, data) => {
+    if (error) {
+      console.log(error);
+      res.send("<h1>There was an error processing your request</h1>");
+    } else {
+      console.log(data);
+      const person = data.split("\n").find((user) => user.includes(str));
+      console.log(person);
+      person?.length
+        ? res.send(`<h1>Hey ${person.split(",")[0]} you have access</h1>`)
+        : res.send(`<h1>Invalid loggin details</h1>`);
+    }
   });
 });
 
